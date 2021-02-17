@@ -1,7 +1,46 @@
 ﻿@page "/"
 
+@using BlazorWasm.Shared.DTOContracts
+@using BlazorWasm.Client.Services
+
+@inject IMandoServiceClient _serviceClient
+
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+<p>Below is example of a list overview fetched using a gRPC channel.</p>
+
+@if (_mandoCharacters == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Character Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var mandoCharacter in _mandoCharacters)
+            {
+                <tr>
+                    <th scope="row">@mandoCharacter.Id</th>
+                    <th>@mandoCharacter.Name</th>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code{
+    private IReadOnlyList<MandoCharacterOverview> _mandoCharacters;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _mandoCharacters = await _serviceClient.ListMandoCharacters();
+    }
+}

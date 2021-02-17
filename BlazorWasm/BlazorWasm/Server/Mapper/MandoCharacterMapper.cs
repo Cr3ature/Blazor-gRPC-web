@@ -8,6 +8,16 @@ namespace BlazorWasm.Server.Mapper
 {
     public static class MandoCharacterMapper
     {
+        public static MandoCharacter ToEntity(this MandoCharacterDetail mandoCharacterDetail)
+            => new MandoCharacter
+            {
+                ID = mandoCharacterDetail.ID,
+                InSeason1 = mandoCharacterDetail.InSeason1,
+                InSeason2 = mandoCharacterDetail.InSeason2,
+                Name = mandoCharacterDetail.Name,
+                Performer = mandoCharacterDetail.Performer,
+            };
+
         public static MandoCharacterDetail ToMandoCharacterDetail(this MandoCharacter mandoCharacter)
             => new MandoCharacterDetail
             {

@@ -18,6 +18,7 @@ namespace BlazorWasm.Server.Data
             }
 
             context.MandoCharacters.AddRange(MandoCharacters);
+            context.SaveChanges();
         }
 
 
