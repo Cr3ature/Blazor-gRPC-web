@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace BlazorWasm.Shared.Contracts
+namespace BlazorWasm.Shared.DTOContracts
 {
     [DataContract]
     public class MandoCharacterOverview

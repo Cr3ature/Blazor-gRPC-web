@@ -1,4 +1,4 @@
-using BlazorWasm.Shared.Contracts;
+using BlazorWasm.Shared.DTOContracts;
 using System.Collections.Generic;
 using System.ServiceModel;
 using System.Threading.Tasks;
